@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg: #000;
+  --clr-1: #00c2ff;
+  --clr-2: #33ff8c;
+  --clr-3: #ffc640;
+  --clr-4: #e54cff;
+}
+
+/* App container */
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+}
+
+/* Header styling */
+.custom-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 11;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000, 0 0 5px cyan, 0 0 10px cyan;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.logo-text i {
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-btn {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-btn:hover {
+  color: cyan;
+}
+
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: cyan;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* Overlay content */
+.overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ✅ Neon Text Container (positioned above typewriter) */
+.neon-container {
+  position: absolute;
+  bottom: 10rem; /* Adjust to move above typewriter */
+  left: 2rem;
+  z-index: 12;
+}
+
+.neon-text {
+  font-size: 2.8rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 0 5px #ff005e,
+    0 0 10px #ff005e,
+    0 0 20px #ff005e,
+    0 0 40px #ff005e,
+    0 0 80px #ff005e;
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Typewriter lines near bottom */
+.hero-bottom {
+  position: absolute;
+  bottom: 3rem;
+  left: 2rem;
+  max-width: 600px;
+  z-index: 12;
+}
+
+/* Typewriter effect */
+.cursor {
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: whitesmoke;
+  margin-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 40ch;
+
+  animation: 
+    typewriter 4s steps(88) 1s 1 normal both,
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkingCursor {
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
+/* Neon glow animation */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+  }
+  100% {
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+  }
+}
+
+/* Bottom-right get started button */
+.get-started {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-family: 'Exo', sans-serif;
+  font-size: 1.8rem;
+  font-variation-settings: "wght" 200;
+  color: gold;
+  text-shadow: 0 0 5px #a200ff, 0 0 10px #4c11b1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 12;
+}
+
+.get-started:hover {
+  font-variation-settings: "wght" 1500;
+}
+
+.get-started i {
+  font-family: FontAwesome;
+  font-size: 1.5rem;
+  font-style: normal;
+  color: orange;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero-bottom,
+  .neon-container {
+    left: 1rem;
+  }
+
+  .cursor {
+    font-size: 1.2rem;
+    max-width: 90vw;
+  }
+
+  .neon-text {
+    font-size: 2rem;
+  }
+}
